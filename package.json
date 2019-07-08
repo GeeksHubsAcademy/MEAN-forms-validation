@@ -1,0 +1,19 @@
+{
+  "name": "moviesWithUsers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:back":"cd backend && npm start",
+    "start:front":"cd frontend && npm start",
+    "start":"concurrently \"npm run start:back\" \"npm run start:front\" "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^4.1.1"
+  }
+}

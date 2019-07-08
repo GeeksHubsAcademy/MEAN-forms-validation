@@ -1,0 +1,17 @@
+.header{
+    display:flex;
+    justify-content: space-around;
+    a{
+        all:unset;
+        font-size: 1.3em;
+        color:rgb(0, 92, 179);
+        &:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+    .isActive{
+        background-color: rgb(136, 231, 255);
+        padding: 0.5em;
+    }
+}
