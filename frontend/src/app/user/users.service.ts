@@ -26,6 +26,10 @@ export class UsersService {
     })
   }
   likeMovie(id: string): Observable<object> {
-    return this.http.get(`http://localhost:3001/users/like/${id}`)
+    return this.http.get(`http://localhost:3001/users/like/${id}`,{
+      headers: {
+        authenticate: localStorage.getItem('authToken')
+      }
+    })
   }
 }

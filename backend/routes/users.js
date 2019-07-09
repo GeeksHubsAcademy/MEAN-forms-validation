@@ -55,10 +55,11 @@ router.patch( '/updateProfile', isAuthenticated, async ( req, res ) => {
 router.get( '/like/:idMovie', isAuthenticated, async ( req, res ) => {
     try {
         const user = await UserModel.findByIdAndUpdate( req.user._id, {
-            $push: { likes: idMovie }
+            $push: { likes: req.params.idMovie }
         }, { new: true } )
         res.send( user )
     } catch ( error ) {
+        console.log(error)
         res.status( 500 ).send( error )
     }
 } )
