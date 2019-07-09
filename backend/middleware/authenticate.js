@@ -5,17 +5,16 @@ const UserModel=require('../models/User.js')
 const isAuthenticated = async ( req, res, next ) => {
     try {
     const token=req.headers.authenticate //cogemos el token de la cabecera de la petición
-    console.log(token)
     const _id = jwt.verify( token, SECRET_AUTH_JWT )._id //aquí sacamos el _id del usuario
    const user=await UserModel.findOne({_id, //buscamos un usuario que tenga ese id y el token este en la base de datos
         tokens:{
-            $elemMatch:{
+            $elemMatch:{ //busca un token que sea de tipo auth y coincida con el token enviado en el header
                 type:"auth",
                 token
             }
         }
     })
-    if(!user) return res.status(401).send('You are not authorized');
+    if(!user) return res.status(401).send('You are not authorized');// si el user no tiene token en la bd devuelve null y entonces envia respuesta de que no estas autorizado
     req.user=user; //aquí paso el user como info de la request
     return next();
     } catch (error) {

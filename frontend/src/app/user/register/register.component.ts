@@ -36,7 +36,6 @@ export class RegisterComponent implements OnInit {
         .subscribe(res =>{
            console.log(res)
            localStorage.setItem('authToken',res.token)
-           this.usersService.isAuth=true;
         },
           error => console.log(error) )
     }

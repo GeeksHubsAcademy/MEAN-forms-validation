@@ -1,0 +1,37 @@
+$inputColor:rgb(0, 185, 154);
+@mixin borderInput {
+    padding: 1em;
+    margin: 1em;
+    border-radius: 0.8em;
+    border: 0.1em solid black;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2em;
+    align-items: center;
+    padding: 2em;
+
+    input {
+        all: unset;
+        @include borderInput;
+        background-color: $inputColor;
+    }
+
+    button {
+        all: unset;
+        text-align: center;
+        @include borderInput;
+        width: 10vw;
+        background-color: rgb(0, 100, 84);
+        color: white;
+    }
+    .error{
+        color:red;
+    }
+}
+
+::placeholder {
+    color: rgb(180, 255, 239);
+}

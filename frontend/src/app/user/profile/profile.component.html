@@ -1,1 +1,23 @@
-<p>profile works!</p>
+<form [formGroup]="form" class="profile"
+(submit)="handleSubmit()" *ngIf="usersService.user">
+    <h2>Actualizar Perfil:</h2>
+    <input type="text" formControlName="name" placeholder="introduce your name"
+    [(ngModel)]="usersService.user.name">
+
+    <div class="error"
+    *ngIf="form.get('name').invalid"> 
+       Name tiene que estar entre 8 y 40 caracteres</div>
+
+    <input type="text" formControlName="email" placeholder="introduce your email"
+    [(ngModel)]="usersService.user.email">
+
+    <div class="error"
+    *ngIf="form.get('email').invalid &&  form.get('email').touched"> 
+       Debes introducir un email</div>
+
+    <input type="password" formControlName="password" placeholder="introduce your password">
+    <div class="error"
+    *ngIf="form.get('password').invalid &&  form.get('password').touched"> 
+       Password debe contener al menos un numero, una letra y ser mayor que 8 carácteres </div>
+    <button type="submit">Enviar</button>
+</form>

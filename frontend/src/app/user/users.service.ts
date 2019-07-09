@@ -5,13 +5,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-  isAuth:boolean;
+  user:object;
   constructor(private http: HttpClient) { }
 
-  register(user:object): Observable<any> {
+  register(user: object): Observable<any> {
     return this.http.post('http://localhost:3001/users/register', user)
   }
-  login(){
-
+  getUserInfo(): Observable<any> {
+    return this.http.get('http://localhost:3001/users/info', {
+      headers: {
+        authenticate:localStorage.getItem('authToken')
+      }
+    })
   }
 }

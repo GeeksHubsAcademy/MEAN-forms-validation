@@ -20,9 +20,7 @@ router.post( '/register', async ( req, res ) => {
     }
 } );
 
-router.get('/info',isAuthenticated,(req,res)=>{
-    res.send(req.user);
-})
+router.get('/info',isAuthenticated,(req,res)=>res.send(req.user))
 
 router.get( '/all', async ( req, res ) => {
     try {

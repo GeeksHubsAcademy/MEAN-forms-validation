@@ -11,17 +11,14 @@ export class PopularMoviesComponent implements OnInit {
   private movies: Object[]; //creamos una array de objetos de movies donde guardaremos las movies y utilizaremos en el html para pintarlos.
   page:number=1;
   totalPages:number;
-  url:SafeResourceUrl;
   constructor(private moviesService: MoviesService, private sanitizer: DomSanitizer) { } //inyecto el servicio como dependencia del componente Popular Movies
 
   ngOnInit(): void {//es el equivalente a ComponentDidMount
     this.moviesService.getPopularMovies(1).subscribe(res => {
       this.totalPages=res.total_pages;
       this.movies = res.results
+      console.log(res)
     }, error => console.log(error));
-    this.moviesService.getTrailerById(550).subscribe(res=>{
-      this.url=this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+res.results[0].key)
-    })
   }
 
   incrementPage(){//993 992
