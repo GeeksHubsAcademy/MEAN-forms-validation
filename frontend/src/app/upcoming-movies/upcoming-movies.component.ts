@@ -10,7 +10,12 @@ export class UpcomingMoviesComponent implements OnInit {
   constructor(private moviesService: MoviesService) { }//aquí inyecto el servicio moviesService al componente upcoming-movies
 
   ngOnInit() {
-    this.moviesService.getUpcomingMovies().subscribe(res => this.movies=res.results,error=>console.log(error))
+    this.moviesService.getUpcomingMovies().subscribe(res => this.movies = res.results, error => console.log(error))
   }
-
+  like(movie) {
+    movie["like"] = true;
+  }
+  disLike(movie){
+    movie["like"] = false;
+  }
 }

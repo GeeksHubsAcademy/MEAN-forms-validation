@@ -26,7 +26,8 @@ const userSchema = new mongoose.Schema( {
     imagePath:{
         type:String,
         default:'profile.png'
-    }
+    },
+    likes:[String]
 }, {
     timestamps: true // añade los campos createdAt y updatedAt
 } );

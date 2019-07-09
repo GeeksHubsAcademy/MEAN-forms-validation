@@ -7,7 +7,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms'
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-
+  // mode:string= this.usersService.user && "profile" || "register";
   constructor(private usersService:UsersService) { }
   form:FormGroup;
   ngOnInit() {
@@ -29,5 +29,14 @@ export class ProfileComponent implements OnInit {
       })
     })
   }
-
+  handleSubmit(event) {
+    console.log(this.form)
+    if (this.form.status === "VALID") {
+      this.usersService.updateProfile(this.form.value)
+      .subscribe(res=>{
+        console.log(res)
+        this.usersService.user=res
+      })
+    }
+  }
 }

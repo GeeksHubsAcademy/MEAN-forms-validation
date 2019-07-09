@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-  user:object;
+  user: object;
   constructor(private http: HttpClient) { }
 
   register(user: object): Observable<any> {
@@ -14,7 +14,14 @@ export class UsersService {
   getUserInfo(): Observable<any> {
     return this.http.get('http://localhost:3001/users/info', {
       headers: {
-        authenticate:localStorage.getItem('authToken')
+        authenticate: localStorage.getItem('authToken')
+      }
+    })
+  }
+  updateProfile(user): Observable<any> {
+    return this.http.patch('http://localhost:3001/users/updateProfile', user,{
+      headers: {
+        authenticate: localStorage.getItem('authToken')
       }
     })
   }
