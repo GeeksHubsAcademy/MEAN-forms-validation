@@ -10,4 +10,7 @@ export class UsersService {
   register(user:object): Observable<any> {
     return this.http.post('http://localhost:3001/users/register', user)
   }
+  login(){
+    
+  }
 }
