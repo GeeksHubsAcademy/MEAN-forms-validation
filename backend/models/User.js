@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema( {
         type:String,
         default:'profile.png'
     },
-    likes:[String]
+    likes:[Number]
 }, {
     timestamps: true // añade los campos createdAt y updatedAt
 } );

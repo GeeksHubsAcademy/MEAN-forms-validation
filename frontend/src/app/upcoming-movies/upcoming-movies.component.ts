@@ -17,10 +17,9 @@ export class UpcomingMoviesComponent implements OnInit {
     this.usersService.likeMovie(movie.id)
       .subscribe(res => {
         this.usersService.user = res;
-        movie["like"] = true;
       })
   }
   disLike(movie) {
-    movie["like"] = false;
+    
   }
 }

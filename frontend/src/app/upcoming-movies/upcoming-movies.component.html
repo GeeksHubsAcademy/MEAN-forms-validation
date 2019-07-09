@@ -4,8 +4,8 @@
         <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" 
         alt="{{movie.title}}"></div>
         <p>{{movie.overview}}</p>
-        <button (click)="like(movie)" *ngIf="!movie.like">Like</button>
-        <button (click)="disLike(movie)" *ngIf="movie.like">DisLike</button>
+        <button (click)="like(movie)" *ngIf="!usersService.user.likes.includes(movie.id) ">Like</button>
+        <button (click)="disLike(movie)" *ngIf="usersService.user.likes.includes(movie.id)">DisLike</button>
     </div>
     </div>
     
