@@ -19,10 +19,13 @@ export class UsersService {
     })
   }
   updateProfile(user): Observable<any> {
-    return this.http.patch('http://localhost:3001/users/updateProfile', user,{
+    return this.http.patch('http://localhost:3001/users/updateProfile', user, {
       headers: {
         authenticate: localStorage.getItem('authToken')
       }
     })
+  }
+  likeMovie(id: string): Observable<object> {
+    return this.http.get(`http://localhost:3001/users/like/${id}`)
   }
 }
