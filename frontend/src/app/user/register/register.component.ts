@@ -33,7 +33,11 @@ export class RegisterComponent implements OnInit {
   handleSubmit() {
     if (this.form.status === "VALID") {
       this.usersService.register(this.form.value)
-        .subscribe(res => console.log(res),
+        .subscribe(res =>{
+           console.log(res)
+           localStorage.setItem('authToken',res.token)
+           this.usersService.isAuth=true;
+        },
           error => console.log(error) )
     }
   }

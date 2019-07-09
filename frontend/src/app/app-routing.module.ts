@@ -5,9 +5,11 @@ import { UpcomingMoviesComponent } from './upcoming-movies/upcoming-movies.compo
 import { LifecycleComponent } from './lifecycle/lifecycle.component'
 import {Page404Component} from './page404/page404.component'
 import {RegisterComponent} from './user/register/register.component'
+import {LoginComponent} from './user/login/login.component'
 const routes: Routes = [
   { path: "popular", component: PopularMoviesComponent },
   { path: "register", component: RegisterComponent },
+  { path: "login", component: LoginComponent },
   { path: "upcoming", component: UpcomingMoviesComponent },
   { path: "movie/:id", component: LifecycleComponent },
   // { path: 'popular/', redirectTo: 'popular', pathMatch: 'full'},

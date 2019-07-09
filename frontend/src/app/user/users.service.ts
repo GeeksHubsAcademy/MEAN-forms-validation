@@ -5,12 +5,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
+  isAuth:boolean;
   constructor(private http: HttpClient) { }
 
   register(user:object): Observable<any> {
     return this.http.post('http://localhost:3001/users/register', user)
   }
   login(){
-    
+
   }
 }
