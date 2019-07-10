@@ -1,5 +1,7 @@
 const mongoose = require( 'mongoose' );
-
-mongoose.connect( 'mongodb://localhost:27017/movies', { useNewUrlParser: true, useCreateIndex:true } )
-.then( () => console.log( 'conectado a mongoDB' ) )
-.catch(error=>console.log('Error al conectar a MongoDB: '+error))
+const atlasUrl = `mongodb+srv://david:mlbh4lVTqwfh7xOd@pelisdb-1n2la.mongodb.net/test?retryWrites=true&w=majority`
+const devUrl = 'mongodb://localhost:27017/movies';
+const url = process.env.NODE_ENV === "production" ? atlasUrl : devUrl;
+mongoose.connect( url, { useNewUrlParser: true, useCreateIndex: true } )
+    .then( () => console.log( 'conectado a mongoDB' ) )
+    .catch( error => console.log( 'Error al conectar a MongoDB: ' + error ) )

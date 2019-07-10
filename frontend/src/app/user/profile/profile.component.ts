@@ -8,7 +8,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms'
 })
 export class ProfileComponent implements OnInit {
   // mode:string= this.usersService.user && "profile" || "register";
-  constructor(private usersService:UsersService) { }
+  constructor(public usersService:UsersService) { }
   form:FormGroup;
   ngOnInit() {
     this.form = new FormGroup({
