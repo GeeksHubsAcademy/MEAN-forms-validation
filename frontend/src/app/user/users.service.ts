@@ -6,27 +6,30 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
   user: object;
+  baseApiUrl=process.env.NODE_ENV==="production"
+   ? "https://pelisback.herokuapp.com"
+   :"http://localhost:3001"
   constructor(private http: HttpClient) { }
 
   register(user: object): Observable<any> {
-    return this.http.post('http://localhost:3001/users/register', user)
+    return this.http.post(this.baseApiUrl + '/users/register', user)
   }
   getUserInfo(): Observable<any> {
-    return this.http.get('http://localhost:3001/users/info', {
+    return this.http.get(this.baseApiUrl + '/users/info', {
       headers: {
         authenticate: localStorage.getItem('authToken')
       }
     })
   }
   updateProfile(user): Observable<any> {
-    return this.http.patch('http://localhost:3001/users/updateProfile', user, {
+    return this.http.patch(this.baseApiUrl + '/users/updateProfile', user, {
       headers: {
         authenticate: localStorage.getItem('authToken')
       }
     })
   }
   likeMovie(id: string): Observable<object> {
-    return this.http.get(`http://localhost:3001/users/like/${id}`,{
+    return this.http.get(this.baseApiUrl + `/users/like/${id}`,{
       headers: {
         authenticate: localStorage.getItem('authToken')
       }

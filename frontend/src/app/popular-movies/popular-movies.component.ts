@@ -8,7 +8,7 @@ import { DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
   styleUrls: ['./popular-movies.component.scss']
 })
 export class PopularMoviesComponent implements OnInit {
-  movies: Object[]; //creamos una array de objetos de movies donde guardaremos las movies y utilizaremos en el html para pintarlos.
+  movies: object[]; //creamos una array de objetos de movies donde guardaremos las movies y utilizaremos en el html para pintarlos.
   page:number=1;
   totalPages:number;
   constructor(public moviesService: MoviesService, private sanitizer: DomSanitizer) { } //inyecto el servicio como dependencia del componente Popular Movies
