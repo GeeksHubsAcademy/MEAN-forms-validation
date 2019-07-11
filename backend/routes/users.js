@@ -49,10 +49,11 @@ router.patch( '/updateProfile', isAuthenticated,uploadAvatar.single('avatar'), a
     try {
         const user = await UserModel.findByIdAndUpdate( req.user._id, {
             ...req.body,
-            imagePath: ""
+            imagePath: req.file.filename //añadimos al campo imagePath el filename que devuelve multer
         }, { new: true, useFindAndModify: false } )
         res.send( user )
     } catch ( error ) {
+        console.log(error)
         res.status( 500 ).send( error )
     }
 } )

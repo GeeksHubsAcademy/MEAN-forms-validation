@@ -3,7 +3,7 @@ const mimetypes = [ 'image/png', 'image/jpg', 'image/jpeg' ];
 const uploadAvatar = Multer( { //aquí pasamos la configuración de dicha librería
     storage: Multer.diskStorage( {
         destination: ( req, file, callback ) => {
-            callback( null, '../public/images' );// aquí especificas el directorio donde se guardan las imagenes de perfil
+            callback( null, './public/images/' );// aquí especificas el directorio donde se guardan las imagenes de perfil
         },
         filename: ( req, file, callback ) => {
             callback( null, Date.now() + '-' + file.originalname ); // aquí especificas el nombre del archivo imagen guardado

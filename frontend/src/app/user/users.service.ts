@@ -21,8 +21,14 @@ export class UsersService {
       }
     })
   }
-  updateProfile(user): Observable<any> {
-    return this.http.patch(this.baseApiUrl + '/users/updateProfile', user, {
+  updateProfile(user, avatar): Observable<any> {
+    const userData=new FormData();
+    userData.set('name',user.name)
+    userData.set('email',user.email)
+    userData.set('password',user.password)
+    userData.append('avatar',avatar)
+    console.log(userData, typeof userData['avatar']);
+    return this.http.patch(this.baseApiUrl + '/users/updateProfile', userData, {
       headers: {
         authenticate: localStorage.getItem('authToken')
       }

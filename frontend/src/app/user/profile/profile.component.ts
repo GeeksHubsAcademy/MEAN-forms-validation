@@ -10,6 +10,7 @@ export class ProfileComponent implements OnInit {
   // mode:string= this.usersService.user && "profile" || "register";
   constructor(public usersService:UsersService) { }
   form:FormGroup;
+  avatar;
   ngOnInit() {
     this.form = new FormGroup({
       name: new FormControl(null, {
@@ -26,13 +27,18 @@ export class ProfileComponent implements OnInit {
           Validators.required,
           Validators.pattern(/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,}$/)
         ]
-      })
+      }),
+      avatar: new FormControl(null ),
     })
   }
-  handleSubmit(event) {
-    console.log(this.form)
+  changeImage(event):void{
+    console.log(event)
+    const file = (event.target as HTMLInputElement).files[0];
+    this.avatar=file;
+  }
+  handleSubmit(event):void {
     if (this.form.status === "VALID") {
-      this.usersService.updateProfile(this.form.value)
+      this.usersService.updateProfile(this.form.value, this.avatar)
       .subscribe(res=>{
         console.log(res)
         this.usersService.user=res

@@ -10,8 +10,9 @@
             cursor: pointer;
         }
     }
-    .isActive{
-        background-color: rgb(136, 231, 255);
-        padding: 0.5em;
+    .avatar{
+        width: 5em;
+        height: 5em;
+        border-radius: 50em;
     }
 }

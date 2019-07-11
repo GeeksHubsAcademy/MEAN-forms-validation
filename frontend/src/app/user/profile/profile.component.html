@@ -16,6 +16,7 @@
        Debes introducir un email</div>
 
     <input type="password" formControlName="password" placeholder="introduce your password">
+    <input type="file" formControlName="avatar" (change)="changeImage($event)">
     <div class="error"
     *ngIf="form.get('password').invalid &&  form.get('password').touched"> 
        Password debe contener al menos un numero, una letra y ser mayor que 8 carácteres </div>

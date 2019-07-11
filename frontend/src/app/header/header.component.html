@@ -3,7 +3,10 @@
     <a class="upcomingFilms" [routerLink]="['/upcoming']" routerLinkActive="isActive">upcoming Films</a>
     <div class="logged" *ngIf="userService.user">
         {{userService.user.name || userService.user.email}}
-        <a class="upcomingFilms" [routerLink]="['/profile']" routerLinkActive="isActive">Profile </a>
+
+        <a class="upcomingFilms" [routerLink]="['/profile']" routerLinkActive="isActive">
+        <img class="avatar" [src]="avatarUrl" alt="">
+        </a>
         <button>Log out</button>
     </div>
     <div class="notLogged" *ngIf="!userService.user">
