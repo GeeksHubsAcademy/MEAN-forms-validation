@@ -9,14 +9,13 @@ import { environment } from '../../environments/environment';
 export class HeaderComponent implements OnInit {
 
   baseApiUrl = process.env.NODE_ENV === "production"
-    ? "https://pelisback.herokuapp.com"
-    : "http://localhost:3001"
-  avatarUrl: string = this.baseApiUrl + "/images/" + this.userService.user['imagePath'];
+    ? "https://pelisback.herokuapp.com/images/"
+    : "http://localhost:3001/images/"
   constructor(public userService: UsersService) { }
 
   ngOnInit() {
     this.userService.getUserInfo()
-      .subscribe(res => this.userService.user = res)
+      .subscribe(res =>this.userService.user = res)
   }
 
 }
