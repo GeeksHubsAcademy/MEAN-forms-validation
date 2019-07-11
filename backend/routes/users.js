@@ -1,6 +1,7 @@
 const router = require( 'express' ).Router();
 const UserModel = require( '../models/User' );
-const isAuthenticated = require( '../middleware/authenticate.js' )
+const isAuthenticated = require( '../middleware/authenticate.js' );
+const uploadAvatar = require( '../config/multer' );
 router.post( '/register', async ( req, res ) => {
     try {
         const user = await new UserModel( {
@@ -44,9 +45,12 @@ router.post( '/login', async ( req, res ) => {
     }
 } );
 
-router.patch( '/updateProfile', isAuthenticated, async ( req, res ) => {
+router.patch( '/updateProfile', isAuthenticated,uploadAvatar.single('avatar'), async ( req, res ) => {
     try {
-        const user = await UserModel.findByIdAndUpdate( req.user._id, req.body, { new: true, useFindAndModify: false } )
+        const user = await UserModel.findByIdAndUpdate( req.user._id, {
+            ...req.body,
+            imagePath: ""
+        }, { new: true, useFindAndModify: false } )
         res.send( user )
     } catch ( error ) {
         res.status( 500 ).send( error )
@@ -55,11 +59,11 @@ router.patch( '/updateProfile', isAuthenticated, async ( req, res ) => {
 router.get( '/like/:idMovie', isAuthenticated, async ( req, res ) => {
     try {
         const user = await UserModel.findByIdAndUpdate( req.user._id, {
-            $push: { likes: Number(req.params.idMovie) }
+            $push: { likes: Number( req.params.idMovie ) }
         }, { new: true } )
         res.send( user )
     } catch ( error ) {
-        console.log(error)
+        console.log( error )
         res.status( 500 ).send( error )
     }
 } )
