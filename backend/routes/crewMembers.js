@@ -1,10 +1,12 @@
 const router = require( 'express' ).Router();
 const CrewMemberModel = require( '../models/CrewMember' );
 const uploadPhoto=require('../config/multer');
-router.post( '/add',uploadPhoto.single('photo'), ( req, res ) => {
+const isAuthenticated=require('../middleware/authenticate')
+router.post( '/add',isAuthenticated,uploadPhoto.single('photo'), ( req, res ) => {
     new CrewMemberModel({
         id:req.body.id,
-        imagePath:req.file.filename
+        imagePath:req.file.filename,
+        contributor:req.user._id
     }).save()
     .then(crewMember=>res.status(201).send(crewMember))
     .catch(error=>{

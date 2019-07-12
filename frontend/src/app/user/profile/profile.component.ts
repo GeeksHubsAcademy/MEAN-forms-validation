@@ -32,7 +32,6 @@ export class ProfileComponent implements OnInit {
     })
   }
   changeImage(event):void{
-    console.log(event)
     const file = (event.target as HTMLInputElement).files[0];
     this.avatar=file;
   }

@@ -2,6 +2,7 @@ require('./config/mongoose.js')
 const express = require( 'express' );
 const app = express();
 const userRouter=require('./routes/users');
+const crewMembersRouter=require('./routes/crewMembers.js')
 const port= process.env.PORT || 3001;
 const path=require('path');
 app.use( function ( req, res, next ) { // permite peticiones de otros dominios
