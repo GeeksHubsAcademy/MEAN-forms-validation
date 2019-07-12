@@ -16,4 +16,7 @@ export class MoviesService { //generamos el servicio con ng g service [nombre de
   getTrailerById(id):Observable<any>{
     return this.http.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=210d6a5dd3f16419ce349c9f1b200d6d&language=en-US`);
   }
+  getCreditsById(id:number):Observable<any>{
+    return this.http.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=210d6a5dd3f16419ce349c9f1b200d6d`)
+  }
 }

@@ -17,6 +17,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { LifecycleComponent } from './lifecycle/lifecycle.component';
 import { Page404Component } from './page404/page404.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { MovieCreditComponent } from './movie-credit/movie-credit.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProfileComponent } from './user/profile/profile.component';
     RegisterComponent,
     LifecycleComponent,
     Page404Component,
-    ProfileComponent
+    ProfileComponent,
+    MovieCreditComponent
   ],
   imports: [
     AppRoutingModule,

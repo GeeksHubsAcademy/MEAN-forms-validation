@@ -1,7 +1,10 @@
 const router = require( 'express' ).Router();
 const CrewMemberModel = require( '../models/CrewMember' );
 const uploadPhoto=require('../config/multer');
-const isAuthenticated=require('../middleware/authenticate')
+const isAuthenticated=require('../middleware/authenticate');
+router.get('/all',(req,res)=>{
+    CrewMemberModel.find({}).then(crewMembers=>res.send(crewMembers))
+})
 router.post( '/add',isAuthenticated,uploadPhoto.single('photo'), ( req, res ) => {
     new CrewMemberModel({
         id:req.body.id,

@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
   user: object;
-  baseApiUrl=process.env.NODE_ENV==="production"
-   ? "https://pelisback.herokuapp.com"
-   :"http://localhost:3001"
+  baseApiUrl = process.env.NODE_ENV === "production"
+    ? "https://pelisback.herokuapp.com"
+    : "http://localhost:3001"
   constructor(private http: HttpClient) { }
 
   register(user: object): Observable<any> {
@@ -22,11 +22,11 @@ export class UsersService {
     })
   }
   updateProfile(user, avatar): Observable<any> {
-    const userData=new FormData();
-    userData.set('name',user.name)
-    userData.set('email',user.email)
-    userData.set('password',user.password)
-    userData.append('avatar',avatar)
+    const userData = new FormData();
+    userData.set('name', user.name)
+    userData.set('email', user.email)
+    userData.set('password', user.password)
+    userData.append('avatar', avatar)
     console.log(userData, typeof userData['avatar']);
     return this.http.patch(this.baseApiUrl + '/users/updateProfile', userData, {
       headers: {
@@ -35,7 +35,20 @@ export class UsersService {
     })
   }
   likeMovie(id: string): Observable<object> {
-    return this.http.get(this.baseApiUrl + `/users/like/${id}`,{
+    return this.http.get(this.baseApiUrl + `/users/like/${id}`, {
+      headers: {
+        authenticate: localStorage.getItem('authToken')
+      }
+    })
+  }
+  getCrewMembers(){
+    return this.http.get('http://localhost:3001/crewMembers/all')
+  }
+  addCrewMemberPhoto(photo, id):Observable<any> {
+    const crewMemberData=new FormData();
+    crewMemberData.set('id',id);
+    crewMemberData.append("photo",photo);
+    return this.http.post('http://localhost:3001/crewMembers/add',crewMemberData,{
       headers: {
         authenticate: localStorage.getItem('authToken')
       }

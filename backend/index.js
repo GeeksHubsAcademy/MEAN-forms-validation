@@ -17,5 +17,5 @@ app.use( express.static( path.join( __dirname, 'public' ) ) );
 app.use( express.json() ) // parsea el body de la petición a JSON
 app.get('/',(req,res)=>res.send('hola'))
 app.use('/users',userRouter);
-
+app.use('/crewMembers',crewMembersRouter);
 app.listen( port, () => console.log( `servidor levantado en ${port}` ) )

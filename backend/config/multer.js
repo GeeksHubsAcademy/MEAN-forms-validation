@@ -9,7 +9,7 @@ const uploadAvatar = Multer( { //aquí pasamos la configuración de dicha librer
             callback( null, Date.now() + '-' + file.originalname ); // aquí especificas el nombre del archivo imagen guardado
         },
     } ),
-    fileFilter: ( req, file, callback ) => {
+    fileFilter: ( req, file, callback ) => { 
         if ( mimetypes.includes( file.mimetype ) ) { //aquí compruebo que mimetype del archivo que me estan enviando sea el que yo tenga recogido
             callback( null, true )
         } else {
